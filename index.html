@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eugenio los 30</title>
+    <meta name="title" content="Eugenio los 30" />
+    <meta
+      name="description"
+      content="Los usamos de  para juntarnos a escabiar 🦖"
+    />
+    <meta property="og:image" content="./Stitch_dancing.png" />
+    <link
+      rel="shortcut icon"
+      href="https://eugeniosaintemarie.github.io/notes/img/sys/favicon.ico"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: black;
+        color: white;
+        text-align: center;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 16px;
+        /*min-height: 100vh;*/
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 16px;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 24px;
+      }
+
+      .emoji {
+        display: inline-block;
+        margin-left: 8px;
+        animation: fade-in-out 3s infinite;
+      }
+
+      @keyframes fade-in-out {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .event-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 16px;
+        margin: 0 auto;
+        max-width: 300px;
+      }
+
+      .event-row {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      .event-button {
+        background-color: white;
+        color: black;
+        border: none;
+        padding: 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+
+      .event-button:hover {
+        transform: scale(1.1);
+      }
+
+      .footer {
+        position: fixed;
+        bottom: 100px;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .footer img {
+        width: 32px;
+        height: 32px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <br /><br />
+      <h1>Los 30</h1>
+      <br />
+      <h2>
+        Los usamos de excusa para juntarnos a escabiar
+        <span class="emoji">🦖</span>
+      </h2>
+      <br />
+      <div class="event-container">
+        <div class="event-row">
+          <div style="text-align: right">
+            <p style="margin-bottom: 0px">Sábado 21 de diciembre</p>
+            <p style="margin-top: 0px">23pm-5am</p>
+          </div>
+          <button class="event-button" onclick="addToCalendar()">📅</button>
+        </div>
+        <div class="event-row">
+          <p>Carlos Calvo 2913</p>
+          <a href="https://maps.app.goo.gl/gwyL49Ye5BR384GV9" target="_blank">
+            <button class="event-button">📍</button>
+          </a>
+        </div>
+      </div>
+      <br />
+      <h3>Casa con barra, pista y patio</h3>
+      <br /><br />
+      <a href="https://www.instagram.com/eugeniosaintemarie/" target="_blank">
+        <img
+          style="width: 40px"
+          src="https://www.instagram.com/static/images/ico/favicon-192.png/68d99ba29cc8.png"
+          alt="Instagram"
+        />
+      </a>
+    </main>
+    <!--<div class="footer">
+    </div>-->
+    <script>
+      function addToCalendar() {
+        const event = {
+          title: "Eugenio los 30",
+          description: "Los usamos de excusa para juntarnos a escabiar 🦖",
+          startDate: new Date(2023, 11, 21, 23, 0).toISOString(),
+          endDate: new Date(2023, 11, 22, 5, 0).toISOString(),
+          location:
+            "Carlos Calvo 2913, C1231 Cdad. Autónoma de Buenos Aires, Argentina",
+        };
+
+        const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+          event.title
+        )}&details=${encodeURIComponent(
+          event.description
+        )}&dates=${event.startDate.replace(
+          /-|:|\.\d+/g,
+          ""
+        )}/${event.endDate.replace(
+          /-|:|\.\d+/g,
+          ""
+        )}&location=${encodeURIComponent(event.location)}`;
+
+        window.open(url, "_blank");
+      }
+    </script>
+  </body>
+</html>
