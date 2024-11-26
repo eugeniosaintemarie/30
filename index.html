@@ -167,19 +167,51 @@
             "Carlos Calvo 2913, C1231 Cdad. Autónoma de Buenos Aires, Argentina",
         };
 
-        const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
-          event.title
-        )}&details=${encodeURIComponent(
-          event.description
-        )}&dates=${event.startDate.replace(
-          /-|:|\.\d+/g,
-          ""
-        )}/${event.endDate.replace(
-          /-|:|\.\d+/g,
-          ""
-        )}&location=${encodeURIComponent(event.location)}`;
+        const isAndroid = /Android/i.test(navigator.userAgent);
+        const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-        window.open(url, "_blank");
+        if (isAndroid) {
+          const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+            event.title
+          )}&details=${encodeURIComponent(
+            event.description
+          )}&dates=${event.startDate.replace(
+            /-|:|\.\d+/g,
+            ""
+          )}/${event.endDate.replace(
+            /-|:|\.\d+/g,
+            ""
+          )}&location=${encodeURIComponent(event.location)}`;
+
+          window.open(url, "_blank");
+        } else if (isIOS) {
+          const formatDate = (date) =>
+            date.replace(/-|:|\.\d+/g, "").slice(0, -1) + "Z";
+
+          const icsContent = `
+    BEGIN:VCALENDAR
+    VERSION:2.0
+    CALSCALE:GREGORIAN
+    BEGIN:VEVENT
+    SUMMARY:${event.title}
+    DESCRIPTION:${event.description}
+    DTSTART:${formatDate(event.startDate)}
+    DTEND:${formatDate(event.endDate)}
+    LOCATION:${event.location}
+    END:VEVENT
+    END:VCALENDAR
+    `.trim();
+
+          const blob = new Blob([icsContent], {
+            type: "text/calendar;charset=utf-8;",
+          });
+          const link = document.createElement("a");
+          link.href = URL.createObjectURL(blob);
+          link.download = "event.ics";
+          link.click();
+        } else {
+          alert("Lo siento, no pudimos detectar tu sistema operativo.");
+        }
       }
     </script>
   </body>
