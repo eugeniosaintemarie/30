@@ -17,10 +17,7 @@
       property="og:image"
       content="https://eugeniosaintemarie.github.io/30/Stitch_dancing.png"
     />
-    <meta
-      property="og:url"
-      content="https://eugeniosaintemarie.github.io/30/"
-    />
+    <meta property="og:url" content="https://eugeniosaintemarie.github.io/30" />
     <meta property="og:type" content="website" />
 
     <style>
@@ -111,12 +108,17 @@
         height: 32px;
       }
     </style>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LNQ47VG50M"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LNQ47VG50M"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-LNQ47VG50M');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-LNQ47VG50M");
     </script>
   </head>
   <body>
@@ -125,6 +127,9 @@
       <h1>Los 30 🎂</h1>
       <br />
       <h2>Los usamos de excusa para juntarnos a escabiar mucho 🍻</h2>
+      <a href="https://www.instagram.com/eugeniosaintemarie/" target="_blank">
+        <img style="width: 275px" src="./Stitch_tongue.gif" />
+      </a>
       <br />
       <div class="event-container">
         <div class="event-row">
@@ -149,19 +154,16 @@
       </div>
       <br />
       <h3>Casa con barra, pista y patio</h3>
-      <br /><br />
-      <p>
-        <a href="https://www.instagram.com/eugeniosaintemarie/" target="_blank">
-          <img
-            style="width: 40px"
-            src="https://www.instagram.com/static/images/ico/favicon-192.png/68d99ba29cc8.png"
-          />
-        </a>
-        <span class="emoji">🦖</span>
-      </p>
     </main>
-    <!--<div class="footer">
-    </div>-->
+    <div class="footer">
+      <p>
+        <a
+          style="text-decoration: none; color: grey"
+          href="https://eugeniosaintemarie.github.io"
+          >∃<span class="emoji">🦖</span></a
+        >
+      </p>
+    </div>
     <script>
       function addToCalendar() {
         const event = {
@@ -217,7 +219,7 @@
           link.download = "event.ics";
           link.click();
         } else {
-          alert("Lo siento, no pudimos detectar tu sistema operativo.");
+          alert("No se pudo detectar tu sistema operativo");
         }
       }
     </script>
